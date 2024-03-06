@@ -10,11 +10,11 @@ app = Flask(__name__)
 
 # loading environment variables
 load_dotenv()
-client_id = os.getenv('CLIENT_ID')
-client_secret = os.getenv('CLIENT_SECRET')
+client_id = <"Your Client ID">
+client_secret = <"Your Client Secret">
 
 app.config['SESSION_COOKIE_NAME'] = 'Spotify Cookie'
-app.secret_key = os.getenv('SECRET_KEY')
+app.secret_key = <"Set a Secret Key">
 
 TOKEN_INFO = 'token_info'
 
@@ -40,8 +40,6 @@ def save_discover_weekly():
     except:
         print("User not logged in")
         return redirect('/')
-    
-    # return ("SUCCESS!")
     
     sp = spotipy.Spotify(auth = token_info['access_token'])
     user_id = sp.current_user()['id']
